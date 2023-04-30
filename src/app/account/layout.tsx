@@ -1,5 +1,5 @@
 'use client';
-import Authenticate from '@/components/api/Authenticate';
+import Authenticate from '@/components/api/Authenticate.hoc';
 import { IRootLayout, IRootLayoutArgs } from '@/types';
 
 const RootLayout: IRootLayout = ({ children }: IRootLayoutArgs) => {
