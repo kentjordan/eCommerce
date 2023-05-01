@@ -1,6 +1,6 @@
 import { ILoginResponse } from "@/app/login/types/types";
 
-export interface IAuthRedirection {
+export interface IAuthRedirectionConfig {
     isRouteSecured?: boolean;
     isAuthenticated: boolean;
     redirectDelay: number;
@@ -8,6 +8,10 @@ export interface IAuthRedirection {
     response?: ILoginResponse;
 }
 
-export type IDependencies = Array<unknown> | undefined
-
-export type IUseAuthrRedirection = (arg0: IAuthRedirection, arg1?: IDependencies) => void;
+export type IUseAuthRedirection = ({
+    isRouteSecured,
+    isAuthenticated,
+    redirectDelay,
+    redirectTo,
+    response,
+}: IAuthRedirectionConfig) => void;
