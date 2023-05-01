@@ -1,19 +1,15 @@
 'use client';
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { IAuthRedirectionConfig, IUseAuthRedirection, IUseAuthRedirectionArgs } from './types';
 
-import { useDispatch } from 'react-redux';
-import { storeUser } from '@/redux/slices/User.slice';
-import { IAuthRedirection, IDependencies, IUseAuthrRedirection } from './types';
-
-const useAuthRedirection: IUseAuthrRedirection = (
-  { isAuthenticated, redirectTo, response, isRouteSecured = false, redirectDelay = 500 }: IAuthRedirection,
-  dependencies: IDependencies
-) => {
-  const currentPath = window.location.pathname;
-
-  const dispatch = useDispatch();
-
+const useAuthRedirection: IUseAuthRedirection = ({
+  isRouteSecured = false,
+  isAuthenticated,
+  redirectDelay = 500,
+  redirectTo,
+}: IAuthRedirectionConfig): void => {
+  const currentPath = usePathname();
   const router = useRouter();
 
   // Used for first traversed route to check if the user is authenticated
@@ -30,23 +26,9 @@ const useAuthRedirection: IUseAuthrRedirection = (
         router.push(redirectTo);
         return;
       }
-      // setTimeout(() => {
-      //   router.push(currentPath);
-      // }, redirectDelay);
     }
   }, []);
 
-  // Used for server-response which re-render sa page
-  // This is when the user mutate the server's database (or do some POST, PATCH, DELETE request)
-  // The variable `dependencies` is the response from the server
-  if (dependencies !== undefined && dependencies?.length > 0) {
-    useEffect(() => {
-      if (response?.isAuthenticated) {
-        dispatch(storeUser(response));
-        router.push('/account');
-      }
-    }, [...dependencies]);
-  }
   return;
 };
 
