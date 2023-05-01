@@ -1,5 +1,5 @@
 'use client';
-import Authenticate from '@/components/api/Authenticate.hoc';
+import withAuthentication from '@/components/api/withAuthentication';
 import { IRootLayout, IRootLayoutArgs } from '@/types';
 
 const RootLayout: IRootLayout = ({ children }: IRootLayoutArgs) => {
@@ -10,4 +10,4 @@ const RootLayout: IRootLayout = ({ children }: IRootLayoutArgs) => {
     Route: /account/:path*
     isRouteSecured? TRUE
 */
-export default Authenticate(RootLayout, { isRouteSecured: true });
+export default withAuthentication(RootLayout, { isRouteSecured: true });
