@@ -1,9 +1,10 @@
-import { IRootLayout } from "@/types";
+import { IRootLayout, IRootLayoutArgs } from "@/types";
+import { FunctionComponent } from 'react'
 
-export interface IAuthRouteConfig {
+export interface IRouteConfig {
     isRouteSecured: boolean;
 }
 
-export interface IAuth {
-    (RootComponent: IRootLayout, { isRouteSecured }: IAuthRouteConfig): IRootLayout;
+export interface IWithAuthentication {
+    (RootComponent: IRootLayout, { isRouteSecured }: IRouteConfig): FunctionComponent<IRootLayoutArgs>;
 }
