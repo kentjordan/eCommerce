@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { IAuthRedirectionConfig, IUseAuthRedirection, IUseAuthRedirectionArgs } from './types';
+import { IAuthRedirectionConfig, IUseAuthRedirection } from './types';
 
 const useAuthRedirection: IUseAuthRedirection = ({
   isRouteSecured = false,
