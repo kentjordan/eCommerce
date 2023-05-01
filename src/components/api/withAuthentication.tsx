@@ -2,12 +2,13 @@ import UnauthorizedPage from '@/app/account/pages/Unauthorized.page';
 import { IUserReducerState } from '@/app/account/types';
 import useAuthRedirection from '@/hooks/useAuthRedirection';
 import { IStoreState } from '@/redux/Store';
-import { IRootLayout, IRootLayoutArgs } from '@/types';
+import { IRootLayoutArgs } from '@/types';
 import { useSelector } from 'react-redux';
-import { IAuth } from '../types';
+import { IWithAuthentication } from '../types';
+import { FunctionComponent } from 'react';
 
-const withAuthentication: IAuth = (
-  RootComponent: React.FunctionComponent<IRootLayoutArgs>,
+const withAuthentication: IWithAuthentication = (
+  RootComponent: FunctionComponent<IRootLayoutArgs>,
   { isRouteSecured }
 ) => {
   return (({ children }) => {
@@ -25,7 +26,7 @@ const withAuthentication: IAuth = (
     if (!isRouteSecured) return <RootComponent>{children}</RootComponent>;
 
     return <UnauthorizedPage />;
-  }) as React.FunctionComponent<IRootLayoutArgs>;
+  }) as FunctionComponent<IRootLayoutArgs>;
 };
 
 export default withAuthentication;
