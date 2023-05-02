@@ -1,4 +1,4 @@
-import { User } from "../dto/user.dto";
+import { User } from "@/dto/user.dto";
 
 interface IResponse {
     [any: string]: any,
