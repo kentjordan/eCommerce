@@ -7,7 +7,7 @@ import { useMutation } from 'react-query';
 import { login } from './api';
 
 import InvalidCredentials from './components/InvalidCredentials';
-import Button from './components/Button';
+import Button from '@/components/Button';
 
 import { useSelector } from 'react-redux';
 import { IStoreState } from '@/redux/Store';
@@ -67,7 +67,9 @@ const LoginPage = () => {
           <Button
             isLoading={isLoading}
             isAuthenticated={responseBody?.isAuthenticated}
-          />
+          >
+            <span>Login</span>
+          </Button>
         </form>
         <div className="my-2">
           <span className="text-stone-900 text-sm">Don&apos;t have an account? </span>
