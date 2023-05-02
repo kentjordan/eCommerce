@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { UserReducer } from './slices/User.slice'
+import { AccountMenuReducer } from "./slices/AccountMenu";
 
 // import { persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
@@ -15,7 +16,8 @@ import { UserReducer } from './slices/User.slice'
 const Store = configureStore({
     reducer: {
         // persistedReducer,
-        UserReducer
+        UserReducer,
+        AccountMenuReducer
     }
 })
 
