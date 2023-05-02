@@ -2,7 +2,6 @@
 import Link from 'next/link';
 
 import { useForm } from 'react-hook-form';
-import { DevTool } from '@hookform/devtools';
 import { useMutation } from 'react-query';
 
 import { login } from './api';
@@ -27,7 +26,7 @@ const LoginPage = () => {
 
   const selectorFn = (state: IStoreState) => state.UserReducer;
 
-  const { isAuthenticated, user } = useSelector(selectorFn) as IUserReducerState;
+  const { isAuthenticated } = useSelector(selectorFn) as IUserReducerState;
 
   const { register, control, handleSubmit } = useForm();
 
@@ -42,11 +41,8 @@ const LoginPage = () => {
     }
   }, [responseBody?.isAuthenticated]);
 
-  if (user !== undefined && isAuthenticated) return <></>;
-
   return (
-    <div className="flex flex-col h-full  justify-center items-center p-16">
-      <DevTool control={control} />
+    <div className="flex flex-col h-full justify-center items-center p-16">
       <InvalidCredentials isSuccess={responseBody?.isAuthenticated} />
       <h1 className="text-xl text-stone-900 font-bold m-4">eCommerce</h1>
       <div className="w-[320px] border p-4 rounded">
