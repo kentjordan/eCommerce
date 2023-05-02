@@ -12,7 +12,7 @@ const AccountPage = () => {
   const {
     user: { email, first_name, last_name, gender },
   } = useSelector((state: IStoreState) => state.UserReducer) as IUserReducerState;
-  
+
   return (
     <div className="h-full w-full flex  justify-center items-center bg-stone-50 ">
       <div className="flex">
