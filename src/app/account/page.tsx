@@ -7,6 +7,7 @@ import { IStoreState } from '@/redux/Store';
 import { IUserReducerState } from './types';
 
 import { useSelector } from 'react-redux';
+import { IoPersonCircle } from 'react-icons/io5';
 
 const AccountPage = () => {
   const {
@@ -24,15 +25,12 @@ const AccountPage = () => {
             <hr className="my-4" />
           </div>
           <div className="flex items-center flex-col my-6">
-            <Image
-              className="rounded-full"
-              src="https://picsum.photos/100/100"
-              width={100}
-              height={100}
-              alt="Profile photo"
-            />
+            <IoPersonCircle
+              size={100}
+              className="text-stone-200"
+            ></IoPersonCircle>
             <div className="flex items-center">
-              <h1 className="font-bold my-4">
+              <h1 className="font-bold my-2">
                 {first_name} {last_name}
               </h1>
               <BsPencilSquare className="mx-2 text-cyan-700 cursor-pointer" />
