@@ -4,10 +4,29 @@ import { signup } from './api';
 import Link from 'next/link';
 
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
+import Button from '@/components/Button';
+import { storeUser } from '@/redux/slices/User.slice';
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 
 const SignupPage = () => {
-  const { mutate } = useMutation({ mutationFn: signup });
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+
+  const { mutate, data, isLoading } = useMutation({ mutationFn: signup });
+
   const { register, handleSubmit } = useForm();
+
+  const responseBody = data?.data;
+
+  useEffect(() => {
+    if (responseBody?.isAuthenticated) {
+      dispatch(storeUser(responseBody));
+      router.push('/account');
+    }
+  }, [responseBody?.isAuthenticated]);
 
   return (
     <div className="flex flex-col h-full justify-center items-center">
@@ -93,12 +112,12 @@ const SignupPage = () => {
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="bg-stone-900 text-stone-100 font-bold my-4 rounded p-1"
+          <Button
+            isAuthenticated={data?.data.isSuccess}
+            isLoading={isLoading}
           >
-            Sign up
-          </button>
+            <span>Signup</span>
+          </Button>
         </form>
         <div className="my-2">
           <span className="text-stone-900 text-sm">Do have an account? </span>
