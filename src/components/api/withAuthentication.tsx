@@ -1,4 +1,4 @@
-import UnauthorizedPage from '@/app/account/pages/Unauthorized.page';
+import UnauthorizedPage from '@/components/Unauthorized.page';
 import { IUserReducerState } from '@/app/account/types';
 import useAuthRedirection from '@/hooks/useAuthRedirection';
 import { IStoreState } from '@/redux/Store';
@@ -13,11 +13,11 @@ const withAuthentication: IWithAuthentication = (
 ) => {
   return (({ children }) => {
     const { isAuthenticated } = useSelector((state: IStoreState) => state.UserReducer) as IUserReducerState;
-
+    
     useAuthRedirection({
       isRouteSecured,
       isAuthenticated,
-      redirectDelay: 2000,
+      redirectDelay: 1500,
       redirectTo: '/login',
     });
 
