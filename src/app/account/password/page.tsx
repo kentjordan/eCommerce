@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const PasswordPage = () => {
   return (
-    <div className='h-full w-full bg-red-700 flex items-center justify-center'>
-      Password Page
+    <div className="h-full w-full flex items-center justify-center">
+      <h1 className="text-2xl">Password Page. This is where you change your password.</h1>
     </div>
   );
 };
