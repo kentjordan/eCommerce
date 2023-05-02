@@ -26,9 +26,7 @@ const LoginPage = () => {
 
   const selectorFn = (state: IStoreState) => state.UserReducer;
 
-  const { isAuthenticated } = useSelector(selectorFn) as IUserReducerState;
-
-  const { register, control, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const { data, mutate, isLoading } = useMutation(login);
 
