@@ -5,4 +5,5 @@ export interface ILoginForm {
 
 export interface ILoginResponse {
     isAuthenticated: boolean
+    [key: string]: any
 }
