@@ -9,11 +9,7 @@ import { login } from './api';
 import InvalidCredentials from './components/InvalidCredentials';
 import Button from '@/components/Button';
 
-import { useSelector } from 'react-redux';
 import { IStoreState } from '@/redux/Store';
-import { IUserReducerState } from '../account/types';
-import { useEffect } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { storeUser } from '@/redux/slices/User.slice';
 
@@ -24,20 +20,18 @@ const LoginPage = () => {
 
   const dispatch = useDispatch();
 
-  const selectorFn = (state: IStoreState) => state.UserReducer;
-
   const { register, handleSubmit } = useForm();
 
-  const { data, mutate, isLoading } = useMutation(login);
+  const { data, mutate, isLoading } = useMutation(login, {
+    onSuccess: (response) => {
+      if (response.data.isAuthenticated) {
+        dispatch(storeUser(response.data));
+        router.push('/account');
+      }
+    },
+  });
 
   const responseBody = data?.data;
-
-  useEffect(() => {
-    if (responseBody?.isAuthenticated) {
-      dispatch(storeUser(responseBody));
-      router.push('/account');
-    }
-  }, [responseBody?.isAuthenticated]);
 
   return (
     <div className="flex flex-col h-full justify-center items-center p-16">
