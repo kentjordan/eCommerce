@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { BsPersonCircle, BsSearch, BsCart } from 'react-icons/bs';
-import Image from 'next/image';
-import { MdContentPaste, MdLogout, MdSettings, MdArrowForwardIos } from 'react-icons/md';
-import AccountMenu from './AccountMenu';
+import AccountMenuItems from './account-menu';
 import { IStoreState } from '@/redux/Store';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleAccountMenu } from '@/redux/slices/AccountMenu';
@@ -47,7 +45,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <AccountMenu />
+      <AccountMenuItems />
     </>
   );
 };
