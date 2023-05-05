@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { UserReducer } from './slices/User.slice'
-import { AccountMenuReducer } from "./slices/AccountMenu";
+import { PopupMenuControllerReducer } from "./slices/PopupMenuController.slice";
 
 // import { persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
@@ -17,7 +17,7 @@ const Store = configureStore({
     reducer: {
         // persistedReducer,
         UserReducer,
-        AccountMenuReducer
+        PopupMenuControllerReducer
     }
 })
 

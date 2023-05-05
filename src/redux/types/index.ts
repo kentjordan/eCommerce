@@ -7,3 +7,9 @@ interface IResponse {
 }
 
 export interface IUserReducerState extends IResponse { }
+
+
+export interface IPopupMenuControllerState {
+    navbarUserMenu: boolean,
+    accountPageMenu: boolean
+}
