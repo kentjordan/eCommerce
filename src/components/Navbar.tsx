@@ -1,13 +1,11 @@
 import Link from 'next/link';
 import { BsPersonCircle, BsSearch, BsCart } from 'react-icons/bs';
 import AccountMenuItems from './account-menu';
-import { IStoreState } from '@/redux/Store';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleAccountMenu } from '@/redux/slices/AccountMenu';
+import { useDispatch } from 'react-redux';
+import { toggleNavbarUserMenu } from '@/redux/slices/PopupMenuController.slice';
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { isOpened } = useSelector((state: IStoreState) => state.AccountMenuReducer);
 
   return (
     <>
@@ -39,7 +37,7 @@ const Navbar = () => {
             <li className="m-2 relative">
               <BsPersonCircle
                 className="cursor-pointer"
-                onClick={() => dispatch(toggleAccountMenu())}
+                onClick={() => dispatch(toggleNavbarUserMenu())}
               />
             </li>
           </ul>
