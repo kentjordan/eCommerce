@@ -1,4 +1,4 @@
-import { toggleAccountMenu } from '@/redux/slices/AccountMenu';
+import { toggleNavbarUserMenu } from '@/redux/slices/PopupMenuController.slice';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
@@ -26,7 +26,7 @@ const AuthdItems = () => {
       <Link
         href="/account/profile"
         className="flex items-center cursor-pointer hover:bg-stone-700 hover:rounded"
-        onClick={() => dispatch(toggleAccountMenu())}
+        onClick={() => dispatch(toggleNavbarUserMenu())}
       >
         <IoPersonCircle
           size={50}
@@ -51,7 +51,7 @@ const AuthdItems = () => {
                 className="text-stone-400"
               />
             }
-            toggleAccountMenu={() => dispatch(toggleAccountMenu())}
+            toggleNavbarUserMenu={() => dispatch(toggleNavbarUserMenu())}
           >
             Settings
           </Item>
@@ -63,7 +63,7 @@ const AuthdItems = () => {
                 className="text-stone-400"
               />
             }
-            toggleAccountMenu={() => dispatch(toggleAccountMenu())}
+            toggleNavbarUserMenu={() => dispatch(toggleNavbarUserMenu())}
           >
             Purchase
           </Item>
@@ -75,8 +75,8 @@ const AuthdItems = () => {
                 className="text-stone-400"
               />
             }
-            toggleAccountMenu={() => {
-              dispatch(toggleAccountMenu());
+            toggleNavbarUserMenu={() => {
+              dispatch(toggleNavbarUserMenu());
             }}
           >
             Logout

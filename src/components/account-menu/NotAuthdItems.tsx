@@ -1,4 +1,4 @@
-import { toggleAccountMenu } from '@/redux/slices/AccountMenu';
+import { toggleNavbarUserMenu } from '@/redux/slices/PopupMenuController.slice';
 import { MdLogin, MdContentPaste } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import Item from './Item';
@@ -11,14 +11,14 @@ const NotAuthdItems = () => {
       <Item
         Icon={<MdLogin />}
         linkTo="/login"
-        toggleAccountMenu={() => dispatch(toggleAccountMenu())}
+        toggleNavbarUserMenu={() => dispatch(toggleNavbarUserMenu())}
       >
         Login
       </Item>
       <Item
         Icon={<MdContentPaste />}
         linkTo="/signup"
-        toggleAccountMenu={() => dispatch(toggleAccountMenu())}
+        toggleNavbarUserMenu={() => dispatch(toggleNavbarUserMenu())}
       >
         Signup
       </Item>

@@ -1,5 +1,5 @@
 import { IStoreState } from '@/redux/Store';
-import { IUserReducerState } from '@/redux/types';
+import { IPopupMenuControllerState, IUserReducerState } from '@/redux/types';
 import { useSelector } from 'react-redux';
 import AuthdItems from './AuthdItems';
 import NotAuthdItems from './NotAuthdItems';
@@ -7,9 +7,11 @@ import { motion } from 'framer-motion';
 
 const AccountMenuItems = () => {
   const { isAuthenticated } = useSelector((state: IStoreState) => state.UserReducer) as IUserReducerState;
-  const { isOpened } = useSelector((state: IStoreState) => state.AccountMenuReducer);
+  const { navbarUserMenu } = useSelector(
+    (state: IStoreState) => state.PopupMenuControllerReducer
+  ) as IPopupMenuControllerState;
 
-  if (isOpened)
+  if (navbarUserMenu)
     return (
       <motion.div
         initial={{ opacity: 0 }}
